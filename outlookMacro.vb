@@ -96,7 +96,6 @@ Public Sub Purge_ByReceivedDate_First150()
             If Not itm Is Nothing Then
                 ' Check if itm supports Delete method
                 If TypeName(itm) = "MailItem" Or TypeName(itm) = "PostItem" Then
-                    ' StatusBar update removed (not supported in this Outlook version)
                     itm.Delete
                     deleted = deleted + 1
                 Else
@@ -111,7 +110,6 @@ Public Sub Purge_ByReceivedDate_First150()
         End If
         DoEvents
     Next
-    Application.ActiveExplorer.StatusBar = False
 
     MsgBox "Done. Permanently deleted " & deleted & " email(s) from:" & vbCrLf & _
            fld.FolderPath, vbInformation
