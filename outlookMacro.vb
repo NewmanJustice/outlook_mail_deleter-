@@ -96,14 +96,7 @@ Public Sub Purge_ByReceivedDate_First150()
             If Not itm Is Nothing Then
                 ' Check if itm supports Delete method
                 If TypeName(itm) = "MailItem" Or TypeName(itm) = "PostItem" Then
-                    ' Check if StatusBar property is available
-                    On Error Resume Next
-                    Application.ActiveExplorer.StatusBar = "Deleting " & (i) & " of " & kept & "..."
-                    If Err.Number <> 0 Then
-                        MsgBox "Warning: Unable to update StatusBar. Error: " & Err.Description, vbExclamation
-                        Err.Clear
-                    End If
-                    On Error GoTo 0
+                    ' StatusBar update removed (not supported in this Outlook version)
                     itm.Delete
                     deleted = deleted + 1
                 Else
